@@ -1,5 +1,6 @@
 package com.mystore.pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -14,8 +15,12 @@ public class IndexPage extends BaseClass{
 	@FindBy(xpath = "//a[@class='login']")
 	WebElement signInBtn;
 	
-	@FindBy(xpath = "//div[@id='header_logo']/a/img")
+	@FindBy(xpath = "//img[@class='logo img-responsive']")
 	WebElement logo;
+	
+//	@FindBy(id = "header_logo")
+//	WebElement logo;
+	
 	
 	@FindBy(xpath = "//div[@id='search_block_top']/child::form/input[4]")
 	WebElement searchBox;
@@ -39,6 +44,7 @@ public class IndexPage extends BaseClass{
 	}
 	
 	public boolean validateLogo() {
+//		System.out.println(driver.findElement(By.xpath("//div[@id='header_logo']")));
 		return action.isDisplayed(driver, logo);
 	}
 	

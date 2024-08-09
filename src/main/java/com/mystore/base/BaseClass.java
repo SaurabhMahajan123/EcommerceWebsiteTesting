@@ -3,7 +3,8 @@
 	import java.io.FileInputStream;
 	import java.io.FileNotFoundException;
 	import java.io.IOException;
-	import java.util.Properties;
+import java.io.InputStream;
+import java.util.Properties;
 	
 	import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,6 +15,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.BeforeMethod;
 	import org.testng.annotations.BeforeTest;
+import org.testng.reporters.jq.Main;
 
 import com.mystore.actionDrivers.Action;
 	
@@ -30,7 +32,10 @@ import com.mystore.actionDrivers.Action;
 			 prop = new Properties();
 			System.out.println("super constructor invoked");
 			
-			FileInputStream fs = new FileInputStream(System.getProperty("user.dir") + "configuration\\Config.properties");
+			FileInputStream fs = new FileInputStream("./configuration/Config.properties");
+			
+//			InputStream fs = Main.class.getClassLoader().getResourceAsStream("configuration/config.properties");
+			
 			prop.load(fs);
 			
 			
