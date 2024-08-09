@@ -11,13 +11,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 	import org.openqa.selenium.firefox.FirefoxDriver;
 	import org.openqa.selenium.firefox.GeckoDriverInfo;
 	import org.openqa.selenium.ie.InternetExplorerDriver;
-	import org.testng.annotations.BeforeMethod;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.BeforeMethod;
 	import org.testng.annotations.BeforeTest;
+
+import com.mystore.actionDrivers.Action;
 	
 	public class BaseClass {
 	
 		public static WebDriver driver;
 		public static Properties prop;
+		public static Action action  = new Action();
+		
 		
 	@BeforeTest
 	public static void loadConfig() {
@@ -39,6 +44,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 	
 	
 	public static void launchApp() {
+		
+	 
 		String browserName = prop.getProperty("browser");
 		
 		if(browserName.contains("Chrome")) {
@@ -46,8 +53,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 			
 		}else if(browserName.contains("FireFox")) {
 			driver = new FirefoxDriver();
-		}else if(browserName.contains("IE")) {}
-		driver = new InternetExplorerDriver();
+		}else if(browserName.contains("IE")) {
+			driver = new InternetExplorerDriver();
+		}
+		
+		action.implicitWait(driver, 10);
+		action.pageLoadTimeOut(driver, 30);
+		driver.get(prop.getProperty("url"));
+		
+		
 		
 	}
 
