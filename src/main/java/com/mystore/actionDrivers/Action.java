@@ -66,6 +66,8 @@ public class Action extends BaseClass {
 	
 	public static boolean isDisplayed(WebDriver driver , WebElement ele) {
 		boolean flag = false;
+		
+
 		flag  = findElement(driver, ele);
 		if(flag) {
 			flag = ele.isDisplayed();
@@ -78,7 +80,7 @@ public class Action extends BaseClass {
 		}else {
 			System.out.println("not displayed");
 		}
-		
+
 		return flag;
 	}
 	

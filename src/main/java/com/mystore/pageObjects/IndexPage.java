@@ -12,22 +12,19 @@ public class IndexPage extends BaseClass{
 
 	
 	
-	@FindBy(xpath = "//a[@class='login']")
+	@FindBy(xpath= "//a[@class='login']")
 	WebElement signInBtn;
 	
-	@FindBy(xpath = "//img[@class='logo img-responsive']")
-	WebElement logo;
-	
-//	@FindBy(id = "header_logo")
-//	WebElement logo;
-	
-	
-	@FindBy(xpath = "//div[@id='search_block_top']/child::form/input[4]")
+	@FindBy(xpath="//img[@class='logo img-responsive']")
+	WebElement myShoplogo;
+
+	@FindBy(xpath= "//div[@id='search_block_top']/child::form/input[4]")
 	WebElement searchBox;
 	
-	@FindBy(xpath = "//div[@id='search_block_top']/child::form/button")
+	@FindBy(xpath= "//div[@id='search_block_top']/child::form/button")
 	WebElement searchBtn;
 	
+//	public WebElement logo =  driver.findElement(By.xpath("//img[@class='logo img-responsive']"));
 	
 	// we are using pagefactory constructor to intialise he objects
 	
@@ -41,11 +38,12 @@ public class IndexPage extends BaseClass{
 	public LoginPage  clickOnSignIn() {
 		action.click(driver, signInBtn);
 		return new LoginPage();
+		
 	}
 	
-	public boolean validateLogo() {
-//		System.out.println(driver.findElement(By.xpath("//div[@id='header_logo']")));
-		return action.isDisplayed(driver, logo);
+	public boolean validateLogo()  {
+
+		return action.isDisplayed(driver,driver.findElement(By.xpath("//img[@class='logo img-responsive']")));
 	}
 	
 	public String getMyStoreTitle() {

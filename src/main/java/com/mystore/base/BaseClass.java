@@ -65,6 +65,7 @@ import com.mystore.actionDrivers.Action;
 		action.implicitWait(driver, 10);
 		action.pageLoadTimeOut(driver, 30);
 		driver.get(prop.getProperty("url"));
+		driver.manage().window().maximize();
 		
 		
 		

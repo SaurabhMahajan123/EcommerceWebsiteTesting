@@ -25,7 +25,7 @@ import junit.framework.Assert;
 	}
 	
 	@Test
-	public void verifylogo() {
+	public void verifylogo() throws Throwable {
 		boolean result = index.validateLogo();
 		
 		Assert.assertTrue(result);
