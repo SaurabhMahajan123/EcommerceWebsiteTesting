@@ -23,6 +23,9 @@ public class AddToCartPage extends BaseClass {
 	@FindBy(xpath="//span[contains(text(),'Proceed to checkout')]")
 	private WebElement proceedToCheckOutBtn;
 	
+	@FindBy(xpath="//li[@class='selected']")
+	WebElement colorToBeSelect;
+	
 	public AddToCartPage() {
 		PageFactory.initElements(driver, this);
 		
@@ -32,11 +35,18 @@ public class AddToCartPage extends BaseClass {
 		action.type(quantity, quantity1);
 	}
 	
+	public void enterColor() throws Throwable {
+		
+		action.click(driver, colorToBeSelect);
+	}
+	
 	public void selectSize(String size1) throws Throwable {
 		action.selectByVisibleText(size1, size);
 	}
 	
 	public void clickOnAddToCart() throws Throwable {
+//		action.fluentWait(driver, addToCartBtn, 10);
+//		action.scrollByVisibiltyOfElement(driver, addToCartBtn);
 		action.click(driver, addToCartBtn);
 	}
 	

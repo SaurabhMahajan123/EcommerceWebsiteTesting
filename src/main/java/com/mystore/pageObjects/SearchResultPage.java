@@ -9,8 +9,10 @@ import com.mystore.base.BaseClass;
 public class SearchResultPage extends BaseClass {
 	
 	
-	@FindBy(xpath="//*[@id=\"center_column\"]//img")
+	@FindBy(xpath="//img[@src='http://www.automationpractice.pl/img/p/1/6/16-home_default.jpg']")
 	private WebElement productResult;
+	
+	
 	
 	public SearchResultPage() {
 		PageFactory.initElements(driver, this);
@@ -23,6 +25,7 @@ public class SearchResultPage extends BaseClass {
 	
 	public AddToCartPage clickOnProduct() throws Throwable {
 		action.click(driver, productResult);
+		
 		return new AddToCartPage();
 	}
 	

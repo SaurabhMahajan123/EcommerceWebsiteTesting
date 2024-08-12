@@ -27,7 +27,7 @@ public class SearchResultPageTestCase extends BaseClass{
 	@Test
 	public void productAvialabilityTest() throws Throwable {
 		indexPage = new IndexPage();
-		searchResult = indexPage.searchProduct("t-shirt");
+		searchResult = indexPage.searchProduct("Printed Summer Dress");
 		boolean result = searchResult.isProductAvailable();
 		Assert.assertTrue(result);
 	
