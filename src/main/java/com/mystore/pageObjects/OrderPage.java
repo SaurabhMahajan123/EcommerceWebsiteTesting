@@ -7,17 +7,23 @@ import com.mystore.base.BaseClass;
 
 public class OrderPage  extends BaseClass{
 
+//	@FindBy(xpath="//tr[@id='product_6_40_0_7431']/child::td[4]/ul")
+//	 WebElement unitPrice;
+	
 	@FindBy(xpath="//td[@class='cart_unit']/span/span")
-	private WebElement unitPrice;
+	 WebElement unitPrice;
 	
 	@FindBy(id="total_price")
-	private WebElement totalPrice;
+	 WebElement totalPrice;
 	
 	@FindBy(xpath="//span[text()='Proceed to checkout']")
-	private WebElement proceedToCheckOut;
+	 WebElement proceedToCheckOut;
 	
 	public double getUnitPrice() {
+		
+		action.fluentWait(driver, unitPrice, 10);
 		String unitPrice1=unitPrice.getText();
+		
 		String unit=unitPrice1.replaceAll("[^a-zA-Z0-9]","");
 		double finalUnitPrice=Double.parseDouble(unit);
 		return finalUnitPrice/100;
