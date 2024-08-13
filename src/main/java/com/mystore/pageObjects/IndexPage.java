@@ -51,6 +51,7 @@ public class IndexPage extends BaseClass{
 	}
 	
 	public SearchResultPage searchProduct(String productname) {
+		action.fluentWait(driver, searchBox, 5);
 		action.type(searchBox, productname);
 		action.click(driver,searchBtn);
 		return new SearchResultPage();

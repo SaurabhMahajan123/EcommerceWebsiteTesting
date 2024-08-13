@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class OrderConfirmationPage extends BaseClass {
 
-	@FindBy(xpath="//p/strong[contains(text(),'Your order on My Store is complete.')]")
+	@FindBy(xpath="//p[@class='alert alert-success']")
 	private WebElement confirmMessag;
 	
 	public OrderConfirmationPage() {
@@ -15,6 +15,7 @@ public class OrderConfirmationPage extends BaseClass {
 	}
 	
 	public String validateConfirmMessage() {
+		action.fluentWait(driver, confirmMessag, 10);
 		String confirmMsg=confirmMessag.getText();
 		return confirmMsg;
 	}

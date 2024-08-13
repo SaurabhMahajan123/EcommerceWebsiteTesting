@@ -45,7 +45,8 @@ public class LoginPage extends BaseClass {
 	}
 	
 	public AddressPage login1(String uname, String pswd,AddressPage addressPage) throws Throwable {
-		action.scrollByVisibiltyOfElement(driver, userNameEmailId);
+		Thread.sleep(5000);
+//		action.scrollByVisibiltyOfElement(driver, userNameEmailId);
 		action.type(userNameEmailId, uname);
 		action.type(userPassword, pswd);
 		action.click(driver, signInBtn);
