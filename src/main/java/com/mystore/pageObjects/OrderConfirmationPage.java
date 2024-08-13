@@ -11,11 +11,11 @@ public class OrderConfirmationPage extends BaseClass {
 	private WebElement confirmMessag;
 	
 	public OrderConfirmationPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 	}
 	
 	public String validateConfirmMessage() {
-		action.fluentWait(driver, confirmMessag, 10);
+		action.fluentWait(getDriver(), confirmMessag, 10);
 		String confirmMsg=confirmMessag.getText();
 		return confirmMsg;
 	}

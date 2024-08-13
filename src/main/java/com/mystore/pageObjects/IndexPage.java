@@ -29,31 +29,31 @@ public class IndexPage extends BaseClass{
 	// we are using pagefactory constructor to intialise he objects
 	
 	public IndexPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 		
 	}
 	
 	// functional methods for index page
 	
 	public LoginPage  clickOnSignIn() {
-		action.click(driver, signInBtn);
+		action.click(getDriver(), signInBtn);
 		return new LoginPage();
 		
 	}
 	
 	public boolean validateLogo()  {
 
-		return action.isDisplayed(driver,driver.findElement(By.xpath("//img[@class='logo img-responsive']")));
+		return action.isDisplayed(getDriver(),getDriver().findElement(By.xpath("//img[@class='logo img-responsive']")));
 	}
 	
 	public String getMyStoreTitle() {
-		return action.getTitle(driver);
+		return action.getTitle(getDriver());
 	}
 	
 	public SearchResultPage searchProduct(String productname) {
-		action.fluentWait(driver, searchBox, 5);
+		action.fluentWait(getDriver(), searchBox, 5);
 		action.type(searchBox, productname);
-		action.click(driver,searchBtn);
+		action.click(getDriver(),searchBtn);
 		return new SearchResultPage();
 	}
 	

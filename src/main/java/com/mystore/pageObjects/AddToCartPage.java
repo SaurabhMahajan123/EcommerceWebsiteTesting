@@ -27,7 +27,7 @@ public class AddToCartPage extends BaseClass {
 	WebElement colorToBeSelect;
 	
 	public AddToCartPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 		
 	}
 	
@@ -37,7 +37,7 @@ public class AddToCartPage extends BaseClass {
 	
 	public void enterColor() throws Throwable {
 		
-		action.click(driver, colorToBeSelect);
+		action.click(getDriver(), colorToBeSelect);
 	}
 	
 	public void selectSize(String size1) throws Throwable {
@@ -47,18 +47,18 @@ public class AddToCartPage extends BaseClass {
 	public void clickOnAddToCart() throws Throwable {
 //		action.fluentWait(driver, addToCartBtn, 10);
 //		action.scrollByVisibiltyOfElement(driver, addToCartBtn);
-		action.click(driver, addToCartBtn);
+		action.click(getDriver(), addToCartBtn);
 	}
 	
 	public boolean validateAddtoCart() throws Throwable {
-		action.fluentWait(driver, addToCartMessag, 10);
-		return action.isDisplayed(driver, addToCartMessag);
+		action.fluentWait(getDriver(), addToCartMessag, 10);
+		return action.isDisplayed(getDriver(), addToCartMessag);
 	}
 	
 	
 	public OrderPage clickOnCheckOut() throws Throwable {
-		action.fluentWait(driver, proceedToCheckOutBtn, 10);
-		action.JSClick(driver, proceedToCheckOutBtn);
+		action.fluentWait(getDriver(), proceedToCheckOutBtn, 10);
+		action.JSClick(getDriver(), proceedToCheckOutBtn);
 		return new OrderPage();
 	}
 	

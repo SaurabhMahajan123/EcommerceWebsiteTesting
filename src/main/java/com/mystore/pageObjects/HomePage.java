@@ -25,17 +25,17 @@ public class HomePage extends BaseClass{
 	
 	
 	public HomePage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 		
 	}
 	
 	
 	public boolean validateOrderHistory() throws Throwable {
-		return action.isDisplayed(driver, orderHistoryDetails);
+		return action.isDisplayed(getDriver(), orderHistoryDetails);
 	}
 	
 	public String getCurrURL() throws Throwable {
-		String homePageURL=action.getCurrentURL(driver);
+		String homePageURL=action.getCurrentURL(getDriver());
 		return homePageURL;
 	}
 	

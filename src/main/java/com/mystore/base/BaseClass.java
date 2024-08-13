@@ -1,18 +1,20 @@
 	package com.mystore.base;
-	
+	import io.github.bonigarcia.wdm.WebDriverManager;
 	import java.io.FileInputStream;
 	import java.io.FileNotFoundException;
 	import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-	
-	import org.openqa.selenium.WebDriver;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 	import org.openqa.selenium.firefox.FirefoxDriver;
 	import org.openqa.selenium.firefox.GeckoDriverInfo;
 	import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.BeforeMethod;
 	import org.testng.annotations.BeforeTest;
 import org.testng.reporters.jq.Main;
@@ -21,10 +23,10 @@ import com.mystore.actionDrivers.Action;
 	
 	public class BaseClass {
 	
-		public static WebDriver driver;
+		
 		public static Properties prop;
 		public static Action action  = new Action();
-		
+		public static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal();
 		
 	@BeforeTest
 	public static void loadConfig() {
@@ -48,24 +50,38 @@ import com.mystore.actionDrivers.Action;
 	}
 	
 	
-	public static void launchApp() {
+	public static WebDriver getDriver() {
+		// Get Driver from threadLocalmap
+		return driver.get();
+	}
+	
+	public static void launchApp(String browserName) {
 		
 	 
-		String browserName = prop.getProperty("browser");
-		
-		if(browserName.contains("Chrome")) {
-			driver= new ChromeDriver();
-			
-		}else if(browserName.contains("FireFox")) {
-			driver = new FirefoxDriver();
-		}else if(browserName.contains("IE")) {
-			driver = new InternetExplorerDriver();
-		}
-		
-		action.implicitWait(driver, 10);
-		action.pageLoadTimeOut(driver, 30);
-		driver.get(prop.getProperty("url"));
-		driver.manage().window().maximize();
+		// String browserName = prop.getProperty("browser");
+				if (browserName.equalsIgnoreCase("Chrome")) {
+					WebDriverManager.chromedriver().setup();
+					// Set Browser to ThreadLocalMap
+					driver.set(new ChromeDriver());
+				} else if (browserName.equalsIgnoreCase("FireFox")) {
+					WebDriverManager.firefoxdriver().setup();
+					driver.set(new FirefoxDriver());
+				} else if (browserName.equalsIgnoreCase("IE")) {
+					WebDriverManager.iedriver().setup();
+					driver.set(new InternetExplorerDriver());
+				}
+				//Maximize the screen
+				getDriver().manage().window().maximize();
+				//Delete all the cookies
+				getDriver().manage().deleteAllCookies();
+				//Implicit TimeOuts
+				getDriver().manage().timeouts().implicitlyWait
+				(Integer.parseInt(prop.getProperty("implicitWait")),TimeUnit.SECONDS);
+				//PageLoad TimeOuts
+				getDriver().manage().timeouts().pageLoadTimeout
+				(Integer.parseInt(prop.getProperty("pageLoadTimeOut")),TimeUnit.SECONDS);
+				//Launching the URL
+				getDriver().get(prop.getProperty("url"));
 		
 		
 		

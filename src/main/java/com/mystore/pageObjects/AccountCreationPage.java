@@ -15,12 +15,12 @@ public class AccountCreationPage extends  BaseClass{
 	
 	
 	public AccountCreationPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 		
 	}
 	
 	
 	public boolean validateAcountCreatePage() throws Throwable {
-		 return action.isDisplayed(driver, formTitle);
+		 return action.isDisplayed(getDriver(), formTitle);
 	}
 }

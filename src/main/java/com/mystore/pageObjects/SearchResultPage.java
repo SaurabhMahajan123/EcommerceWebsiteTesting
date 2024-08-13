@@ -15,16 +15,16 @@ public class SearchResultPage extends BaseClass {
 	
 	
 	public SearchResultPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 	}
 
 	public boolean isProductAvailable() throws Throwable {
-		return action.isDisplayed(driver, productResult);
+		return action.isDisplayed(getDriver(), productResult);
 	}
 	
 	
 	public AddToCartPage clickOnProduct() throws Throwable {
-		action.click(driver, productResult);
+		action.click(getDriver(), productResult);
 		
 		return new AddToCartPage();
 	}

@@ -26,7 +26,7 @@ public class OrderPage extends BaseClass {
 	
 	
 	public OrderPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 		
 	}
 
@@ -48,7 +48,7 @@ public class OrderPage extends BaseClass {
 	}
 
 	public LoginPage clickOnCheckOut() throws Throwable {
-		action.click(driver, proceedToCheckOut);
+		action.click(getDriver(), proceedToCheckOut);
 		return new LoginPage();
 	}
 

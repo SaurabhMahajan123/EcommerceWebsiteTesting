@@ -12,11 +12,11 @@ public class AddressPage extends BaseClass{
 	private WebElement proceedToCheckOut;
 	
 	public AddressPage() {
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(getDriver(), this);
 	}
 
 	public ShippingPage clickOnCheckOut() throws Throwable {
-		action.click(driver, proceedToCheckOut);
+		action.click(getDriver(), proceedToCheckOut);
 		return new ShippingPage();
 	}
 
