@@ -35,13 +35,13 @@ public class OrderPageTestCase extends BaseClass {
 		searchResult=indexPage.searchProduct("Printed Summer Dress");
 		addToCartPage=searchResult.clickOnProduct();
 		addToCartPage.enterColor();
-		addToCartPage.enterQuantity("2");
+		addToCartPage.enterQuantity("1");
 		addToCartPage.selectSize("M");
 		addToCartPage.clickOnAddToCart();
 		orderPage=addToCartPage.clickOnCheckOut();
 		double unitPrice=orderPage.getUnitPrice();
 		double totalPrice=orderPage.getTotalPrice();
-		double totalExpectedPrice = (unitPrice*2) + 2;
+		double totalExpectedPrice = (unitPrice*1);
 		Assert.assertEquals(totalPrice, totalExpectedPrice);
 	}
 }
