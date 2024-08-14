@@ -17,6 +17,7 @@ import com.mystore.pageObjects.OrderSummaryPage;
 import com.mystore.pageObjects.PaymentPage;
 import com.mystore.pageObjects.SearchResultPage;
 import com.mystore.pageObjects.ShippingPage;
+import com.mystore.utility.Log;
 
 public class EndToEndTestCase extends BaseClass{
 
@@ -45,7 +46,7 @@ public class EndToEndTestCase extends BaseClass{
 	
 	@Test
 	public void endToEndTest() throws Throwable {
-//		Log.startTestCase("endToEndTest");
+		Log.startTestCase("endToEndTest");
 		index= new IndexPage();
 		searchResultPage=index.searchProduct("Printed Summer Dress");
 		addToCartPage=searchResultPage.clickOnProduct();
@@ -63,7 +64,7 @@ public class EndToEndTestCase extends BaseClass{
 		String actualMessage=orderConfirmationPage.validateConfirmMessage();
 		String expectedMsg="Your order on My Shop is complete.";
 		Assert.assertEquals(actualMessage, expectedMsg);
-//		Log.endTestCase("endToEndTest");
+		Log.endTestCase("endToEndTest");
 	}
 	
 }

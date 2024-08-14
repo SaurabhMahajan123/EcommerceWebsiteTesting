@@ -10,6 +10,7 @@ import com.mystore.base.BaseClass;
 import com.mystore.pageObjects.AccountCreationPage;
 import com.mystore.pageObjects.IndexPage;
 import com.mystore.pageObjects.LoginPage;
+import com.mystore.utility.Log;
 
 public class AccountCreationPageTestCase extends BaseClass {
 	IndexPage indexPage;
@@ -30,12 +31,13 @@ public class AccountCreationPageTestCase extends BaseClass {
 	
 	@Test
 	public void verifyCreateAccountPageTest () throws Throwable {
-		
+		Log.startTestCase("verifyCreateAccountPageTest");
 		indexPage= new IndexPage();
 		loginPage=indexPage.clickOnSignIn();
 		accountCreation=loginPage.createNewAccount("dfjkekr@xyz.com");
 		boolean result=accountCreation.validateAcountCreatePage();
 		Assert.assertTrue(result);
+		Log.endTestCase("verifyCreateAccountPageTest");
 		
 	}
 }

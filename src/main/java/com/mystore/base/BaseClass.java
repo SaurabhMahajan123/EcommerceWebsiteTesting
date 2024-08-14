@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,6 +18,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.reporters.jq.Main;
 
@@ -28,8 +30,10 @@ public class BaseClass {
 	public static Action action = new Action();
 	public static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal();
 
-	@BeforeTest
+
+	@BeforeSuite
 	public static void loadConfig() {
+		DOMConfigurator.configure("log4j.xml");
 		try {
 			prop = new Properties();
 			System.out.println("super constructor invoked");

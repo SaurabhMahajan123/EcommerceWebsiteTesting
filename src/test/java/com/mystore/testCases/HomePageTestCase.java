@@ -10,6 +10,7 @@ import com.mystore.base.BaseClass;
 import com.mystore.pageObjects.HomePage;
 import com.mystore.pageObjects.IndexPage;
 import com.mystore.pageObjects.LoginPage;
+import com.mystore.utility.Log;
 
 public class HomePageTestCase extends BaseClass {
 
@@ -30,12 +31,13 @@ public class HomePageTestCase extends BaseClass {
 
 	@Test()
 	public void orderHistoryandDetailsTest() throws Throwable {
-
+		Log.startTestCase("wishListTest");
 		indexPage = new IndexPage();
 		loginPage = indexPage.clickOnSignIn();
 		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
 		boolean result = homePage.validateOrderHistory();
 		Assert.assertTrue(result);
+		Log.endTestCase("wishListTest");
 		
 	}
 

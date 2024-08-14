@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import com.mystore.base.BaseClass;
 import com.mystore.pageObjects.IndexPage;
+import com.mystore.utility.Log;
 
 import junit.framework.Assert;
 	
@@ -17,7 +18,8 @@ import junit.framework.Assert;
 		
 	@Parameters("browser")
 	@BeforeMethod
-	public void setup(String browser) {
+	public void setup(String browser ) {
+		System.out.println(browser);
 		launchApp(browser);
 	}
 	
@@ -28,18 +30,20 @@ import junit.framework.Assert;
 	
 	@Test
 	public void verifylogo() throws Throwable {
+		Log.startTestCase("verifyLogo");
 		boolean result = index.validateLogo();
 		
 		Assert.assertTrue(result);
+		Log.endTestCase("verifyLogo");
 	}
 	
 	
 	@Test
 	public void verifyTitle() {
-	
+		Log.startTestCase("verifyTitle");
 		String actTitle=index.getMyStoreTitle();
-		
 		Assert.assertEquals(actTitle, "My Shop");
+		Log.endTestCase("verifyTitle");
 		
 	}
 	

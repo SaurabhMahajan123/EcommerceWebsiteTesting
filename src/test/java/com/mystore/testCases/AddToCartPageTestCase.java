@@ -10,6 +10,7 @@ import com.mystore.base.BaseClass;
 import com.mystore.pageObjects.AddToCartPage;
 import com.mystore.pageObjects.IndexPage;
 import com.mystore.pageObjects.SearchResultPage;
+import com.mystore.utility.Log;
 
 public class AddToCartPageTestCase extends BaseClass {
 	IndexPage indexPage;
@@ -29,17 +30,17 @@ public class AddToCartPageTestCase extends BaseClass {
 	
 	@Test
 	public void addToCartTest() throws Throwable {
-
+		Log.startTestCase("addToCartTest");
 		indexPage= new IndexPage();
 		searchResult=indexPage.searchProduct("Printed Summer Dress");
 		addToCartPage=searchResult.clickOnProduct();
-	
 		addToCartPage.enterColor();
 		addToCartPage.enterQuantity("1");
 		addToCartPage.selectSize("M");
 		addToCartPage.clickOnAddToCart();
 		boolean result=addToCartPage.validateAddtoCart();
 		Assert.assertTrue(result);
+		Log.endTestCase("addToCartTest");
 
 	}
 }
