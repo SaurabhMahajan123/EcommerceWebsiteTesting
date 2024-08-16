@@ -7,6 +7,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.mystore.base.BaseClass;
+import com.mystore.dataproviders.DataproviderMethods;
 import com.mystore.pageObjects.HomePage;
 import com.mystore.pageObjects.IndexPage;
 import com.mystore.pageObjects.LoginPage;
@@ -29,12 +30,13 @@ public class HomePageTestCase extends BaseClass {
 		getDriver().quit();
 	}
 
-	@Test()
-	public void orderHistoryandDetailsTest() throws Throwable {
+	@Test(dataProvider = "credentials", dataProviderClass = DataproviderMethods.class)
+	public void orderHistoryandDetailsTest(String uname, String pswd) throws Throwable {
 		Log.startTestCase("wishListTest");
 		indexPage = new IndexPage();
 		loginPage = indexPage.clickOnSignIn();
-		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+//		homePage = loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+		homePage = loginPage.login(uname,pswd,homePage);
 		boolean result = homePage.validateOrderHistory();
 		Assert.assertTrue(result);
 		Log.endTestCase("wishListTest");

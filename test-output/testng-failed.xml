@@ -4,15 +4,14 @@
   <test thread-count="5" name="Test(failed)">
     <parameter name="browser" value="Chrome"/>
     <classes>
-      <class name="com.mystore.testCases.IndexPageTestCase">
+      <class name="com.mystore.testCases.HomePageTestCase">
         <methods>
-          <include name="verifyTitle"/>
-          <include name="verifylogo"/>
           <include name="tearDown"/>
-          <include name="loadConfig"/>
+          <include name="orderHistoryandDetailsTest" invocation-numbers="1"/>
           <include name="setup"/>
+          <include name="loadConfig"/>
         </methods>
-      </class> <!-- com.mystore.testCases.IndexPageTestCase -->
+      </class> <!-- com.mystore.testCases.HomePageTestCase -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

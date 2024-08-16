@@ -36,7 +36,7 @@ public class LoginPage extends BaseClass {
 	
 	// user sign in methods
 	
-	public HomePage login(String uname , String pass) {
+	public HomePage login(String uname , String pass,HomePage homePage) {
 		action.type(userNameEmailId, uname);
 		action.type(userPassword, pass);
 		action.click(getDriver(), signInBtn);

@@ -7,6 +7,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.mystore.base.BaseClass;
+import com.mystore.dataproviders.DataproviderMethods;
 import com.mystore.pageObjects.IndexPage;
 import com.mystore.pageObjects.SearchResultPage;
 import com.mystore.utility.Log;
@@ -27,11 +28,11 @@ public class SearchResultPageTestCase extends BaseClass{
 		getDriver().quit();
 	}
 	
-	@Test
-	public void productAvialabilityTest() throws Throwable {
+	@Test(dataProvider = "searchProduct", dataProviderClass = DataproviderMethods.class)
+	public void productAvialabilityTest(String product) throws Throwable {
 		Log.startTestCase("productAvailabilityTest");
 		indexPage = new IndexPage();
-		searchResult = indexPage.searchProduct("Printed Summer Dress");
+		searchResult = indexPage.searchProduct(product);
 		boolean result = searchResult.isProductAvailable();
 		Assert.assertTrue(result);
 		Log.endTestCase("productAvailabilityTest");
